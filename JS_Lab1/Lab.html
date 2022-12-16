@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS test</title>
+    </head>
+    <body>
+        <script>
+            var first = prompt('Enter first input:');
+            var second = prompt('Enter second input:');
+
+            document.bgColor='white';
+
+            if(first>second){
+                document.bgColor='lightblue'
+                document.write('<p>firstInput > secondInput</p>')
+            }else if (second > first){
+                document.bgColor="lightgreen";
+                document.write("<p>secondInput > firstInput</p>")
+            }else{
+                document.bgColor="lightyellow";
+                document.write("<p>secondInput == firstInput</p>");
+            }
+
+            function show1(){
+                alert(first);
+            }
+
+            function show2() {
+                alert(second);
+            }
+
+        </script>
+
+        <button type="button" onclick="show1()">Show First Input</button>
+        <button type="button" onclick="show2()"">Show Second Input</button>
+    </body>
+</html>
