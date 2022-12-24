@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS_Lab2</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <script>
+            var dies = [];
+            var times = ["none",0,0,0,0,0,0];
+            var total=0;
+            window.addEventListener("load", start);
+
+            function start(){
+                var button = document.getElementById("roll");
+                button.addEventListener("click", rollDice);
+
+                for (let index = 1; index <= 12; index++){
+                    var img = document.createElement("img");
+                    img.id="die"+index;
+                    img.src = "die"+1+".png";
+                    img.width=60;
+                    img.height=60;
+                    dies.push(img);
+                    document.getElementById("mid").appendChild(img);
+                }
+            }
+
+            function rollDice(){
+                dies.forEach(d => {
+                    setImg(d);
+                });
+                update();
+            }
+
+            function setImg(img){
+                var num = Math.floor(1+Math.random()*6);
+
+                img.setAttribute("src", "die"+num+".png");
+                times[num]+=1;
+                total+=1;
+            }
+
+            function update(){
+                for (let index = 1; index < times.length; index++) {
+                    var time = times[index];
+                    var percent = time/total;
+
+                    document.getElementById('freq'+index).innerHTML = time;
+                    document.getElementById('percent'+index).innerHTML = percent.toFixed(2);
+                }
+            }
+        </script>
+        <section class="container">
+            <div id="top" class="div">
+                <form>
+                    <input id="roll" type="button" class="button" value="Roll Dice">
+                </form>
+            </div>
+            <div id="mid" class="div"></div>
+            <div id="bottom" class="div">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Face</th>
+                            <th class="text-left">Freq</th>
+                            <th class="text-left">Percent</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                        <tr>
+                            <td class="text-left">1</td>
+                            <td id="freq1" class="text-left">0</td>
+                            <td id="percent1" class="text-left">0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">2</td>
+                            <td id="freq2" class="text-left">0</td>
+                            <td id="percent2" class="text-left">0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">3</td>
+                            <td id="freq3" class="text-left">0</td>
+                            <td id="percent3" class="text-left">0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">4</td>
+                            <td id="freq4" class="text-left">0</td>
+                            <td id="percent4" class="text-left">0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">5</td>
+                            <td id="freq5" class="text-left">0</td>
+                            <td id="percent5" class="text-left">0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">6</td>
+                            <td id="freq6" class="text-left">0</td>
+                            <td id="percent6" class="text-left">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <p style="color: rgb(255, 225, 247);">made by
+                    <a href="https://github.com/Rhapsody027">@Rhapsody</a>
+                </p>
+            </div>
+        </section>
+    </body>
+</html>
